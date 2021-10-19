@@ -1,0 +1,999 @@
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>roulette</title>
+<style>
+html, body
+{
+	margin:0;
+	padding:0;
+}
+@font-face 
+{
+	font-family:f0; 
+	src:url('cloock-black.svg#cloock-black') format('svg'); 
+}
+@font-face {
+	font-family:f1;
+	src:url('cloock-cloock.svg#cloock-cloock') format('svg'); 
+}
+@font-face 
+{ 
+	font-family:f2; 
+	src:url('cloock-roman.svg#cloock-roman') format('svg'); 
+}
+@font-face 
+{ 
+	font-family:f3; 
+	src:url('cloock-script.svg#cloock-script') format('svg'); 
+}
+@font-face 
+{ 
+	font-family:f4; 
+	src:url('cloock-type.svg#cloock-type') 
+	format('svg'); 
+}
+#roulette-box .f0 {font-family:f0}
+#roulette-box .f1 {font-family:f1}
+#roulette-box .f2 {font-family:f2}
+#roulette-box .f3 {font-family:f3}
+#roulette-box .f4 {font-family:f4}
+
+#roulette-box 
+{
+	position:absolute; 
+	top:10px; 
+	left:10px; 
+	width:300px; 
+	height:300px;
+	border-radius:150px; 
+	border:1px solid #999; 
+	box-shadow:inset 0 0 20px 0 rgba(0,0,0,.9); 
+	background:#006400;
+}
+#roulette-box>div
+{
+	position:absolute; 
+	top:0; 
+	left:110px; 
+	width:80px; 
+	height:120px;
+	text-align:center; 
+	font-size:30px;
+	-o-transform-origin:50% 150px;
+	-webkit-transform-origin:50% 150px;
+	-moz-transform-origin:50% 150px;
+	transform-origin:50% 150px;
+}
+.opera #roulette-box>div {line-height:.8;}
+.webkit #roulette-box>div {line-height:1.2;}
+.moz #roulette-box>div {line-height:1;}
+#roulette-box #roulette-number-0 {-o-transform:rotate(0deg);-webkit-transform:rotate(0deg);-moz-transform:rotate(0deg);
+transform:rotate(0deg);}
+#roulette-box #roulette-number-1 {-o-transform:rotate(20deg);-webkit-transform:rotate(20deg);-moz-transform:rotate(20deg);
+transform:rotate(20deg);}
+#roulette-box #roulette-number-2 {-o-transform:rotate(40deg);-webkit-transform:rotate(40deg);-moz-transform:rotate(40deg);
+transform:rotate(40deg);}
+#roulette-box #roulette-number-3 {-o-transform:rotate(60deg);-webkit-transform:rotate(60deg);-moz-transform:rotate(60deg);
+transform:rotate(60deg);}
+#roulette-box #roulette-number-4 {-o-transform:rotate(80deg);-webkit-transform:rotate(80deg);-moz-transform:rotate(80deg);
+transform:rotate(80deg);}
+#roulette-box #roulette-number-5 {-o-transform:rotate(100deg);-webkit-transform:rotate(100deg);-moz-transform:rotate(100deg);
+transform:rotate(100deg);}
+#roulette-box #roulette-number-6 {-o-transform:rotate(120deg);-webkit-transform:rotate(120deg);-moz-transform:rotate(120deg);
+transform:rotate(120deg);}
+#roulette-box #roulette-number-7 {-o-transform:rotate(140deg);-webkit-transform:rotate(140deg);-moz-transform:rotate(140deg);
+transform:rotate(140deg);}
+#roulette-box #roulette-number-8 {-o-transform:rotate(160deg);-webkit-transform:rotate(160deg);-moz-transform:rotate(160deg);
+transform:rotate(160deg);}
+#roulette-box #roulette-number-9 {-o-transform:rotate(179.9deg);-webkit-transform:rotate(179.9deg);-moz-transform:rotate(179.9deg);
+transform:rotate(179.9deg);}
+#roulette-box #roulette-number-10 {-o-transform:rotate(-160deg);-webkit-transform:rotate(-160deg);-moz-transform:rotate(-160deg);
+transform:rotate(-162deg);}
+#roulette-box #roulette-number-11 {-o-transform:rotate(-140deg);-webkit-transform:rotate(-140deg);-moz-transform:rotate(-140deg);
+transform:rotate(-140deg);}
+#roulette-box #roulette-number-12 {-o-transform:rotate(-120deg);-webkit-transform:rotate(-120deg);-moz-transform:rotate(-120deg);
+transform:rotate(-120deg);}
+#roulette-box #roulette-number-13 {-o-transform:rotate(-100deg);-webkit-transform:rotate(-100deg);-moz-transform:rotate(-100deg);
+transform:rotate(-100deg);}
+#roulette-box #roulette-number-14 {-o-transform:rotate(-80deg);-webkit-transform:rotate(-80deg);-moz-transform:rotate(-80deg);
+transform:rotate(-80deg);}
+#roulette-box #roulette-number-15 {-o-transform:rotate(-60deg);-webkit-transform:rotate(-60deg);-moz-transform:rotate(-60deg);
+transform:rotate(-60deg);}
+#roulette-box #roulette-number-16 {-o-transform:rotate(-40deg);-webkit-transform:rotate(-40deg);-moz-transform:rotate(-40deg);
+transform:rotate(-40deg);}
+#roulette-box #roulette-number-17 {-o-transform:rotate(-20deg);-webkit-transform:rotate(-20deg);-moz-transform:rotate(-20deg);
+transform:rotate(-20deg);}
+  
+#roulette-box+#roulette-pointer 
+{
+	position:absolute; 
+	top:80px; 
+	left:80px;
+}
+  
+#roulette-box>div {color:black;}
+#roulette-box.blink0>div:first-child, #roulette-box.blink2>div:first-child 
+{
+	-o-transition:color .3s;
+	-webkit-transition:color .3s;
+	-moz-transition:color .3s;
+	transition:color .3s;
+	color:white;
+}
+#roulette-box.blink1>div:first-child,  #roulette-box>div 
+{
+	-o-transition:color .15s;
+	-webkit-transition:color .15s;
+	-moz-transition:color .15s;
+	transition:color .15s;
+	color:black;
+}
+.WhiteBlock
+{
+	border: 2px solid #000 ;
+	text-align:center;
+	width:254px;
+}
+.RedNumber
+{
+	border:2px solid black;
+	text-align:center;
+	background-color:red;
+	color:white;
+	font-size:20px;
+	width:20px;
+}
+.BlackNumber
+{
+	border:2px solid black;
+	text-align:center;
+	background-color:black;
+	color:white;
+	font-size:20px;
+	width:20px;
+}
+.LeftMoneyDiv
+{
+	border:2px solid gold;
+	text-align:center;
+	font-size:40px;
+	padding-width:120px;
+	background-color:yellow;
+}
+#roulette-toggle
+{
+	width:120px;
+	height:30px;
+}
+</style>
+</head>
+<body>
+<table>
+    <tr>
+        <td>
+            <div style=position:relative;width:360px;height:360px;overflow:hidden>
+			  <div id=roulette-box>
+				<div id=roulette-number-0 class=f0 style="color:#00FF00;">0</div>
+				<div id=roulette-number-1 class=f1 style="color:red;">1</div>
+				<div id=roulette-number-2 class=f2>2</div>
+				<div id=roulette-number-3 class=f3 style="color:red;">3</div>
+				<div id=roulette-number-4 class=f4>4</div>
+				<div id=roulette-number-5 class=f0 style="color:red;">5</div>
+				<div id=roulette-number-6 class=f1>6</div>
+				<div id=roulette-number-7 class=f2 style="color:red;">7</div>
+				<div id=roulette-number-8 class=f3>8</div>
+				<div id=roulette-number-9 class=f4 style="color:red;">9</div>
+				<div id=roulette-number-10 class=f0>10</div>
+				<div id=roulette-number-11 class=f1 style="color:red;">11</div>
+				<div id=roulette-number-12 class=f2>12</div>
+				<div id=roulette-number-13 class=f3 style="color:red;">13</div>
+				<div id=roulette-number-14 class=f4>14</div>
+				<div id=roulette-number-15 class=f0 style="color:red;">15</div>
+				<div id=roulette-number-16 class=f1>16</div>
+				<div id=roulette-number-17 class=f2 style="color:red;">17</div>
+			  </div>
+			  <canvas id=roulette-pointer width=160 height=160></canvas>
+			</div>
+        </td>
+        <td>
+			<br />
+			<br />
+			<div class="Slider" id="Slider">
+				<div class="MoneyDiv" id="MoneyDiv">
+					<table class="MoneyTable" id="Moneytable" cellspacing="2">
+						<tr>
+							<td width="200" class="WhiteBlock" id="WhiteBlock1" value="5" onclick="put(5)">$5</td>
+							<td width="200" class="WhiteBlock" id="WhiteBlock2" value="50" onclick="put(50)">$50</td>
+							<td width="200" class="WhiteBlock" id="WhiteBlock3" value="100" onclick="put(100)">$100</td>
+						</tr>
+					</table>
+				</div>
+            	<br />
+				<div class="NumberDiv" id="NumberDiv">
+					<table class="NumberTable" border="1" cellspacing="2" cellpadding="40" align="center">
+						<tr>
+							<td class="RedNumber" id="Num1" onclick="put2(1)">1</td>
+							<td class="BlackNumber" id="Num4" onclick="put2(4)">4</td>
+							<td class="RedNumber" id="Num7" onclick="put2(7)">7</td>
+							<td class="BlackNumber" id="Num10" onclick="put2(10)">10</td>
+							<td class="RedNumber" id="Num13" onclick="put2(13)">13</td>
+							<td class="BlackNumber" id="Num16" onclick="put2(16)">16</td>
+						</tr>
+						<tr>
+							<td class="BlackNumber" id="Num2" onclick="put2(2)">2</td>
+							<td class="RedNumber" id="Num5" onclick="put2(5)">5</td>
+							<td class="BlackNumber" id="Num8" onclick="put2(8)">8</td>
+							<td class="RedNumber" id="Num11" onclick="put2(11)">11</td>
+							<td class="BlackNumber" id="Num14" onclick="put2(14)">14</td>
+							<td class="RedNumber" id="Num17" onclick="put2(17)">17</td>
+						</tr>
+						<tr>
+							<td class="RedNumber" id="Num3" onclick="put2(3)">3</td>
+							<td class="BlackNumber" id="Num6" onclick="put2(6)">6</td>
+							<td class="RedNumber" id="Num9" onclick="put2(9)">9</td>
+							<td class="BlackNumber" id="Num12" onclick="put2(12)">12</td>
+							<td class="RedNumber" id="Num15" onclick="put2(15)">15</td>
+							<td id="Reset" onclick="put3()">Reset</td>
+						</tr>
+						<tr>
+							<td id="redbut" onclick="put4(1)">&ensp;Red&ensp;&ensp;</td>
+							<td id="blackbut" onclick="put4(2)">Black&ensp;</td>
+							<td id="line1" onclick="put4(3)">Line1&ensp;</td>
+							<td id="line2" onclick="put4(4)">Line2&ensp;</td>
+							<td id="line3" onclick="put4(5)">Line3&ensp;</td>
+							<td id="all" onclick="put4(6)">Replay</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+            <br />
+            <div class="LeftMoneyDiv" id="LeftMoneyDiv">
+				$1000
+            </div>
+            <br />
+			<button id=roulette-toggle>Start</button>
+        </td>
+    </tr>
+</table>
+<script>
+var cond=0;
+var save=1000;
+var redu1=5;
+var redu2=50;
+var redu3=100;
+var save2=1000;
+var ab=0;
+var bc=0;
+var cd=0;
+var de=0;
+var ef=0;
+function put(a)
+{
+	if(a==5&&save>0)
+	{
+		document.getElementById("WhiteBlock1").bgColor="yellow";
+		document.getElementById("WhiteBlock2").bgColor="white";
+		document.getElementById("WhiteBlock3").bgColor="white";
+		cond=1;
+	}
+	if(a==50&&save>0)
+	{
+		document.getElementById("WhiteBlock2").bgColor="blue";
+		document.getElementById("WhiteBlock1").bgColor="white";
+		document.getElementById("WhiteBlock3").bgColor="white";
+		cond=2;
+	}
+	if(a==100&&save>0)
+	{
+		document.getElementById("WhiteBlock3").bgColor="green";
+		document.getElementById("WhiteBlock1").bgColor="white";
+		document.getElementById("WhiteBlock2").bgColor="white";
+		cond=3;
+	}
+}
+function put2(b)
+{
+	if(cond==1)
+	{
+		if(b==1&&document.getElementById("Num1").style.color!="yellow"&&(save-redu1)>=0)
+		{
+			document.getElementById("Num1").style.color="yellow";
+			save-=redu1;
+			document.getElementById("LeftMoneyDiv").innerHTML="$"+save;
+		}
+		if(b==2&&document.getElementById("Num2").style.color!="yellow"&&(save-redu1)>=0)
+		{
+			document.getElementById("Num2").style.color="yellow";
+			save-=redu1;
+			document.getElementById("LeftMoneyDiv").innerHTML="$"+save;
+		}
+		if(b==3&&document.getElementById("Num3").style.color!="yellow"&&(save-redu1)>=0)
+		{
+			document.getElementById("Num3").style.color="yellow";
+			save-=redu1;
+			document.getElementById("LeftMoneyDiv").innerHTML="$"+save;
+		}
+		if(b==4&&document.getElementById("Num4").style.color!="yellow"&&(save-redu1)>=0)
+		{
+			document.getElementById("Num4").style.color="yellow";
+			save-=redu1;
+			document.getElementById("LeftMoneyDiv").innerHTML="$"+save;
+		}
+		if(b==5&&document.getElementById("Num5").style.color!="yellow"&&(save-redu1)>=0)
+		{
+			document.getElementById("Num5").style.color="yellow";
+			save-=redu1;
+			document.getElementById("LeftMoneyDiv").innerHTML="$"+save;
+		}
+		if(b==6&&document.getElementById("Num6").style.color!="yellow"&&(save-redu1)>=0)
+		{
+			document.getElementById("Num6").style.color="yellow";
+			save-=redu1;
+			document.getElementById("LeftMoneyDiv").innerHTML="$"+save;
+		}
+		if(b==7&&document.getElementById("Num7").style.color!="yellow"&&(save-redu1)>=0)
+		{
+			document.getElementById("Num7").style.color="yellow";
+			save-=redu1;
+			document.getElementById("LeftMoneyDiv").innerHTML="$"+save;
+		}
+		if(b==8&&document.getElementById("Num8").style.color!="yellow"&&(save-redu1)>=0)
+		{
+			document.getElementById("Num8").style.color="yellow";
+			save-=redu1;
+			document.getElementById("LeftMoneyDiv").innerHTML="$"+save;
+		}
+		if(b==9&&document.getElementById("Num9").style.color!="yellow"&&(save-redu1)>=0)
+		{
+			document.getElementById("Num9").style.color="yellow";
+			save-=redu1;
+			document.getElementById("LeftMoneyDiv").innerHTML="$"+save;
+		}
+		if(b==10&&document.getElementById("Num10").style.color!="yellow"&&(save-redu1)>=0)
+		{
+			document.getElementById("Num10").style.color="yellow";
+			save-=redu1;
+			document.getElementById("LeftMoneyDiv").innerHTML="$"+save;
+		}
+		if(b==11&&document.getElementById("Num11").style.color!="yellow"&&(save-redu1)>=0)
+		{
+			document.getElementById("Num11").style.color="yellow";
+			save-=redu1;
+			document.getElementById("LeftMoneyDiv").innerHTML="$"+save;
+		}
+		if(b==12&&document.getElementById("Num12").style.color!="yellow"&&(save-redu1)>=0)
+		{
+			document.getElementById("Num12").style.color="yellow";
+			save-=redu1;
+			document.getElementById("LeftMoneyDiv").innerHTML="$"+save;
+		}
+		if(b==13&&document.getElementById("Num13").style.color!="yellow"&&(save-redu1)>=0)
+		{
+			document.getElementById("Num13").style.color="yellow";
+			save-=redu1;
+			document.getElementById("LeftMoneyDiv").innerHTML="$"+save;
+		}
+		if(b==14&&document.getElementById("Num14").style.color!="yellow"&&(save-redu1)>=0)
+		{
+			document.getElementById("Num14").style.color="yellow";
+			save-=redu1;
+			document.getElementById("LeftMoneyDiv").innerHTML="$"+save;
+		}
+		if(b==15&&document.getElementById("Num15").style.color!="yellow"&&(save-redu1)>=0)
+		{
+			document.getElementById("Num15").style.color="yellow";
+			save-=redu1;
+			document.getElementById("LeftMoneyDiv").innerHTML="$"+save;
+		}
+		if(b==16&&document.getElementById("Num16").style.color!="yellow"&&(save-redu1)>=0)
+		{
+			document.getElementById("Num16").style.color="yellow";
+			save-=redu1;
+			document.getElementById("LeftMoneyDiv").innerHTML="$"+save;
+		}
+		if(b==17&&document.getElementById("Num17").style.color!="yellow"&&(save-redu1)>=0)
+		{
+			document.getElementById("Num17").style.color="yellow";
+			save-=redu1;
+			document.getElementById("LeftMoneyDiv").innerHTML="$"+save;
+		}
+	}
+	if(cond==2)
+	{
+		if(b==1&&document.getElementById("Num1").style.color!="blue"&&(save-redu2)>=0)
+		{
+			document.getElementById("Num1").style.color="blue";
+			save-=redu2;
+			document.getElementById("LeftMoneyDiv").innerHTML="$"+save;
+		}
+		if(b==2&&document.getElementById("Num2").style.color!="blue"&&(save-redu2)>=0)
+		{
+			document.getElementById("Num2").style.color="blue";
+			save-=redu2;
+			document.getElementById("LeftMoneyDiv").innerHTML="$"+save;
+		}
+		if(b==3&&document.getElementById("Num3").style.color!="blue"&&(save-redu2)>=0)
+		{
+			document.getElementById("Num3").style.color="blue";
+			save-=redu2;
+			document.getElementById("LeftMoneyDiv").innerHTML="$"+save;
+		}
+		if(b==4&&document.getElementById("Num4").style.color!="blue"&&(save-redu2)>=0)
+		{
+			document.getElementById("Num4").style.color="blue";
+			save-=redu2;
+			document.getElementById("LeftMoneyDiv").innerHTML="$"+save;
+		}
+		if(b==5&&document.getElementById("Num5").style.color!="blue"&&(save-redu2)>=0)
+		{
+			document.getElementById("Num5").style.color="blue";
+			save-=redu2;
+			document.getElementById("LeftMoneyDiv").innerHTML="$"+save;
+		}
+		if(b==6&&document.getElementById("Num6").style.color!="blue"&&(save-redu2)>=0)
+		{
+			document.getElementById("Num6").style.color="blue";
+			save-=redu2;
+			document.getElementById("LeftMoneyDiv").innerHTML="$"+save;
+		}
+		if(b==7&&document.getElementById("Num7").style.color!="blue"&&(save-redu2)>=0)
+		{
+			document.getElementById("Num7").style.color="blue";
+			save-=redu2;
+			document.getElementById("LeftMoneyDiv").innerHTML="$"+save;
+		}
+		if(b==8&&document.getElementById("Num8").style.color!="blue"&&(save-redu2)>=0)
+		{
+			document.getElementById("Num8").style.color="blue";
+			save-=redu2;
+			document.getElementById("LeftMoneyDiv").innerHTML="$"+save;
+		}
+		if(b==9&&document.getElementById("Num9").style.color!="blue"&&(save-redu2)>=0)
+		{
+			document.getElementById("Num9").style.color="blue";
+			save-=redu2;
+			document.getElementById("LeftMoneyDiv").innerHTML="$"+save;
+		}
+		if(b==10&&document.getElementById("Num10").style.color!="blue"&&(save-redu2)>=0)
+		{
+			document.getElementById("Num10").style.color="blue";
+			save-=redu2;
+			document.getElementById("LeftMoneyDiv").innerHTML="$"+save;
+		}
+		if(b==11&&document.getElementById("Num11").style.color!="blue"&&(save-redu2)>=0)
+		{
+			document.getElementById("Num11").style.color="blue";
+			save-=redu2;
+			document.getElementById("LeftMoneyDiv").innerHTML="$"+save;
+		}
+		if(b==12&&document.getElementById("Num12").style.color!="blue"&&(save-redu2)>=0)
+		{
+			document.getElementById("Num12").style.color="blue";
+			save-=redu2;
+			document.getElementById("LeftMoneyDiv").innerHTML="$"+save;
+		}
+		if(b==13&&document.getElementById("Num13").style.color!="blue"&&(save-redu2)>=0)
+		{
+			document.getElementById("Num13").style.color="blue";
+			save-=redu2;
+			document.getElementById("LeftMoneyDiv").innerHTML="$"+save;
+		}
+		if(b==14&&document.getElementById("Num14").style.color!="blue"&&(save-redu2)>=0)
+		{
+			document.getElementById("Num14").style.color="blue";
+			save-=redu2;
+			document.getElementById("LeftMoneyDiv").innerHTML="$"+save;
+		}
+		if(b==15&&document.getElementById("Num15").style.color!="blue"&&(save-redu2)>=0)
+		{
+			document.getElementById("Num15").style.color="blue";
+			save-=redu2;
+			document.getElementById("LeftMoneyDiv").innerHTML="$"+save;
+		}
+		if(b==16&&document.getElementById("Num16").style.color!="blue"&&(save-redu2)>=0)
+		{
+			document.getElementById("Num16").style.color="blue";
+			save-=redu2;
+			document.getElementById("LeftMoneyDiv").innerHTML="$"+save;
+		}
+		if(b==17&&document.getElementById("Num17").style.color!="blue"&&(save-redu2)>=0)
+		{
+			document.getElementById("Num17").style.color="blue";
+			save-=redu2;
+			document.getElementById("LeftMoneyDiv").innerHTML="$"+save;
+		}
+	}
+	if(cond==3)
+	{
+		if(b==1&&document.getElementById("Num1").style.color!="green"&&(save-redu3)>=0)
+		{
+			document.getElementById("Num1").style.color="green";
+			save-=redu3;
+			document.getElementById("LeftMoneyDiv").innerHTML="$"+save;
+		}
+		if(b==2&&document.getElementById("Num2").style.color!="green"&&(save-redu3)>=0)
+		{
+			document.getElementById("Num2").style.color="green";
+			save-=redu3;
+			document.getElementById("LeftMoneyDiv").innerHTML="$"+save;
+		}
+		if(b==3&&document.getElementById("Num3").style.color!="green"&&(save-redu3)>=0)
+		{
+			document.getElementById("Num3").style.color="green";
+			save-=redu3;
+			document.getElementById("LeftMoneyDiv").innerHTML="$"+save;
+		}
+		if(b==4&&document.getElementById("Num4").style.color!="green"&&(save-redu3)>=0)
+		{
+			document.getElementById("Num4").style.color="green";
+			save-=redu3;
+			document.getElementById("LeftMoneyDiv").innerHTML="$"+save;
+		}
+		if(b==5&&document.getElementById("Num5").style.color!="green"&&(save-redu3)>=0)
+		{
+			document.getElementById("Num5").style.color="green";
+			save-=redu3;
+			document.getElementById("LeftMoneyDiv").innerHTML="$"+save;
+		}
+		if(b==6&&document.getElementById("Num6").style.color!="green"&&(save-redu3)>=0)
+		{
+			document.getElementById("Num6").style.color="green";
+			save-=redu3;
+			document.getElementById("LeftMoneyDiv").innerHTML="$"+save;
+		}
+		if(b==7&&document.getElementById("Num7").style.color!="green"&&(save-redu3)>=0)
+		{
+			document.getElementById("Num7").style.color="green";
+			save-=redu3;
+			document.getElementById("LeftMoneyDiv").innerHTML="$"+save;
+		}
+		if(b==8&&document.getElementById("Num8").style.color!="green"&&(save-redu3)>=0)
+		{
+			document.getElementById("Num8").style.color="green";
+			save-=redu3;
+			document.getElementById("LeftMoneyDiv").innerHTML="$"+save;
+		}
+		if(b==9&&document.getElementById("Num9").style.color!="green"&&(save-redu3)>=0)
+		{
+			document.getElementById("Num9").style.color="green";
+			save-=redu3;
+			document.getElementById("LeftMoneyDiv").innerHTML="$"+save;
+		}
+		if(b==10&&document.getElementById("Num10").style.color!="green"&&(save-redu3)>=0)
+		{
+			document.getElementById("Num10").style.color="green";
+			save-=redu3;
+			document.getElementById("LeftMoneyDiv").innerHTML="$"+save;
+		}
+		if(b==11&&document.getElementById("Num11").style.color!="green"&&(save-redu3)>=0)
+		{
+			document.getElementById("Num11").style.color="green";
+			save-=redu3;
+			document.getElementById("LeftMoneyDiv").innerHTML="$"+save;
+		}
+		if(b==12&&document.getElementById("Num12").style.color!="green"&&(save-redu3)>=0)
+		{
+			document.getElementById("Num12").style.color="green";
+			save-=redu3;
+			document.getElementById("LeftMoneyDiv").innerHTML="$"+save;
+		}
+		if(b==13&&document.getElementById("Num13").style.color!="green"&&(save-redu3)>=0)
+		{
+			document.getElementById("Num13").style.color="green";
+			save-=redu3;
+			document.getElementById("LeftMoneyDiv").innerHTML="$"+save;
+		}
+		if(b==14&&document.getElementById("Num14").style.color!="green"&&(save-redu3)>=0)
+		{
+			document.getElementById("Num14").style.color="green";
+			save-=redu3;
+			document.getElementById("LeftMoneyDiv").innerHTML="$"+save;
+		}
+		if(b==15&&document.getElementById("Num15").style.color!="green"&&(save-redu3)>=0)
+		{
+			document.getElementById("Num15").style.color="green";
+			save-=redu3;
+			document.getElementById("LeftMoneyDiv").innerHTML="$"+save;
+		}
+		if(b==16&&document.getElementById("Num16").style.color!="green"&&(save-redu3)>=0)
+		{
+			document.getElementById("Num16").style.color="green";
+			save-=redu3;
+			document.getElementById("LeftMoneyDiv").innerHTML="$"+save;
+		}
+		if(b==17&&document.getElementById("Num17").style.color!="green"&&(save-redu3)>=0)
+		{
+			document.getElementById("Num17").style.color="green";
+			save-=redu3;
+			document.getElementById("LeftMoneyDiv").innerHTML="$"+save;
+		}
+	}
+}
+function put3()
+{
+	document.getElementById("WhiteBlock1").bgColor="white";
+	document.getElementById("WhiteBlock2").bgColor="white";
+	document.getElementById("WhiteBlock3").bgColor="white";
+	document.getElementById("Num1").style.color="white";
+	document.getElementById("Num3").style.color="white";
+	document.getElementById("Num5").style.color="white";
+	document.getElementById("Num7").style.color="white";
+	document.getElementById("Num9").style.color="white";
+	document.getElementById("Num11").style.color="white";
+	document.getElementById("Num13").style.color="white";
+	document.getElementById("Num15").style.color="white";
+	document.getElementById("Num17").style.color="white";
+	document.getElementById("Num2").style.color="white";
+	document.getElementById("Num4").style.color="white";
+	document.getElementById("Num6").style.color="white";
+	document.getElementById("Num8").style.color="white";
+	document.getElementById("Num10").style.color="white";
+	document.getElementById("Num12").style.color="white";
+	document.getElementById("Num14").style.color="white";
+	document.getElementById("Num16").style.color="white";
+	document.getElementById("LeftMoneyDiv").innerHTML="$"+save2;
+	cond=0;
+	save=save2;
+	ab=0;
+	bc=0;
+	cd=0;
+	de=0;
+	ef=0;
+	resroulette();
+}
+function put4(c)
+{
+	if(c==1&&ab==0)
+	{
+		for(var i=1;i<18;i+=2)
+		{
+			if(cond==1&&(save-redu1)>=0)
+				document.getElementById("Num"+i).style.color="yellow";
+			else if(cond==2&&(save-redu2)>=0)
+				document.getElementById("Num"+i).style.color="blue";
+			else if(cond==3&&(save-redu3)>=0)
+				document.getElementById("Num"+i).style.color="green";
+		}
+		if(cond==1)
+		{
+			save-=redu1;
+			document.getElementById("LeftMoneyDiv").innerHTML="$"+save;
+		}
+		else if(cond==2)
+		{
+			save-=redu2;
+			document.getElementById("LeftMoneyDiv").innerHTML="$"+save;
+		}
+		else if(cond==3)
+		{
+			save-=redu3;
+			document.getElementById("LeftMoneyDiv").innerHTML="$"+save;
+		}
+		ab=1;
+	}
+	if(c==2&&bc==0)
+	{
+		for(var i=2;i<18;i+=2)
+		{
+			if(cond==1&&(save-redu1)>=0)
+				document.getElementById("Num"+i).style.color="yellow";
+			else if(cond==2&&(save-redu2)>=0)
+				document.getElementById("Num"+i).style.color="blue";
+			else if(cond==3&&(save-redu3)>=0)
+				document.getElementById("Num"+i).style.color="green";
+		}
+		if(cond==1)
+		{
+			save-=redu1;
+			document.getElementById("LeftMoneyDiv").innerHTML="$"+save;
+		}
+		else if(cond==2)
+		{
+			save-=redu2;
+			document.getElementById("LeftMoneyDiv").innerHTML="$"+save;
+		}
+		else if(cond==3)
+		{
+			save-=redu3;
+			document.getElementById("LeftMoneyDiv").innerHTML="$"+save;
+		}
+		bc=1;
+	}
+	if(c==3&&cd==0)
+	{
+		for(var i=1;i<18;i+=3)
+		{
+			if(cond==1&&(save-redu1)>=0)
+				document.getElementById("Num"+i).style.color="yellow";
+			else if(cond==2&&(save-redu2)>=0)
+				document.getElementById("Num"+i).style.color="blue";
+			else if(cond==3&&(save-redu3)>=0)
+				document.getElementById("Num"+i).style.color="green";
+		}
+		if(cond==1)
+		{
+			save-=redu1;
+			document.getElementById("LeftMoneyDiv").innerHTML="$"+save;
+		}
+		else if(cond==2)
+		{
+			save-=redu2;
+			document.getElementById("LeftMoneyDiv").innerHTML="$"+save;
+		}
+		else if(cond==3)
+		{
+			save-=redu3;
+			document.getElementById("LeftMoneyDiv").innerHTML="$"+save;
+		}
+		cd=1;
+	}
+	if(c==4&&de==0)
+	{
+		for(var i=2;i<18;i+=3)
+		{
+			if(cond==1&&(save-redu1)>=0)
+				document.getElementById("Num"+i).style.color="yellow";
+			else if(cond==2&&(save-redu2)>=0)
+				document.getElementById("Num"+i).style.color="blue";
+			else if(cond==3&&(save-redu3)>=0)
+				document.getElementById("Num"+i).style.color="green";
+		}
+		if(cond==1)
+		{
+			save-=redu1;
+			document.getElementById("LeftMoneyDiv").innerHTML="$"+save;
+		}
+		else if(cond==2)
+		{
+			save-=redu2;
+			document.getElementById("LeftMoneyDiv").innerHTML="$"+save;
+		}
+		else if(cond==3)
+		{
+			save-=redu3;
+			document.getElementById("LeftMoneyDiv").innerHTML="$"+save;
+		}
+		de=1;
+	}
+	if(c==5&&ef==0)
+	{
+		for(var i=3;i<18;i+=3)
+		{
+			if(cond==1&&(save-redu1)>=0)
+				document.getElementById("Num"+i).style.color="yellow";
+			else if(cond==2&&(save-redu2)>=0)
+				document.getElementById("Num"+i).style.color="blue";
+			else if(cond==3&&(save-redu3)>=0)
+				document.getElementById("Num"+i).style.color="green";
+		}
+		if(cond==1)
+		{
+			save-=redu1;
+			document.getElementById("LeftMoneyDiv").innerHTML="$"+save;
+		}
+		else if(cond==2)
+		{
+			save-=redu2;
+			document.getElementById("LeftMoneyDiv").innerHTML="$"+save;
+		}
+		else if(cond==3)
+		{
+			save-=redu3;
+			document.getElementById("LeftMoneyDiv").innerHTML="$"+save;
+		}
+		ef=1;
+	}
+	if(c==6)
+	{
+		reset();
+	}
+}
+function clear()
+{
+	if(save==0)
+	{
+		alert("已破產");
+		if(confirm( "是否要重來" ))
+			reset();
+	}	
+}
+function reset()
+{
+	resroulette();
+	put3();
+	save=1000;
+	save2=1000;
+	document.getElementById("LeftMoneyDiv").innerHTML="$"+save;
+}
+function resroulette()
+{
+	document.getElementById("roulette-number-0").innerHTML="0";
+	document.getElementById("roulette-number-1").innerHTML="1";
+	document.getElementById("roulette-number-2").innerHTML="2";
+	document.getElementById("roulette-number-3").innerHTML="3";
+	document.getElementById("roulette-number-4").innerHTML="4";
+	document.getElementById("roulette-number-5").innerHTML="5";
+	document.getElementById("roulette-number-6").innerHTML="6";
+	document.getElementById("roulette-number-7").innerHTML="7";
+	document.getElementById("roulette-number-8").innerHTML="8";
+	document.getElementById("roulette-number-9").innerHTML="9";
+	document.getElementById("roulette-number-10").innerHTML="10";
+	document.getElementById("roulette-number-11").innerHTML="11";
+	document.getElementById("roulette-number-12").innerHTML="12";
+	document.getElementById("roulette-number-13").innerHTML="13";
+	document.getElementById("roulette-number-14").innerHTML="14";
+	document.getElementById("roulette-number-15").innerHTML="15";
+	document.getElementById("roulette-number-16").innerHTML="16";
+	document.getElementById("roulette-number-17").innerHTML="17";
+	document.getElementById("roulette-number-0").style.color="#00FF00";
+	for(var i=1;i<18;i++)
+	{
+		if(i%2==0)
+			document.getElementById("roulette-number-"+i).style.color="black";
+		else
+			document.getElementById("roulette-number-"+i).style.color="red";
+	}
+}
+</script>
+<script>
+
+(function() 
+{
+	for (var prop in document.documentElement.style)
+		if (/^(O|Moz|webkit)/.test(prop)) break
+	switch (prop.substr(0,1)) 
+	{
+		case 'O':
+		document.documentElement.className = 'opera'; break
+		case 'M':
+		document.documentElement.className = 'moz'; break
+		case 'w':
+		document.documentElement.className = 'webkit'; break
+	}
+	var main = document.body
+	while (main = main.lastChild)
+		if (main.nodeName == 'SCRIPT') 
+			break
+	var canvas = main.parentNode.querySelector('#roulette-pointer')
+	if (!canvas) 
+		return
+	draw(canvas.getContext('2d'), canvas.width)
+	function draw(c, w) 
+	{
+		var offset = 70
+		c.shadowColor = 'rgba(0,0,0,.7)'
+		c.shadowOffsetX = c.shadowOffsetY = 0
+		c.shadowBlur = 10
+		c.save()
+		c.translate(w/2, w/2)
+		arc()
+		c.restore();c.save()
+		c.translate(w/2, offset+1)
+		pointer()
+		c.restore();c.save()
+		c.shadowBlur = 0
+		c.translate(w/2, w/2)
+		arc()
+		function arc() 
+		{
+			c.beginPath()
+			c.arc(0,0, w/2-offset, 0,Math.PI*2, true)
+			c.fillStyle = 'black'
+			c.fill()
+		}
+		function pointer()
+		{
+			c.beginPath()
+			c.moveTo(-4,0);c.lineTo(0,-66);c.lineTo(4,0)
+			c.closePath()
+			c.fillStyle = 'black'
+			c.fill()
+		}
+	}
+	var timer, count = 0, toggle = main.parentNode.querySelector('#roulette-toggle'),
+	mainBox = main.parentNode.querySelector('#roulette-box'),
+	boxes = [].slice.call(mainBox.querySelectorAll('div'))
+	function update(numBox) 
+	{
+		var n = numBox.textContent *1 -1
+		if (n < 0) n = 17
+			numBox.textContent = n
+			numBox.className = 'f' + Math.floor(Math.random() *5)
+	}
+	function succ() 
+	{
+		for (var i=0; i<18; i++)
+			update(boxes[i])
+		count++
+		for(var j=0;j<18;j++)
+		{
+			if(document.getElementById("roulette-number-"+j).innerHTML=="0")
+				document.getElementById("roulette-number-"+j).style.color="#00FF00"
+			else if(document.getElementById("roulette-number-"+j).innerHTML%2==0)
+				document.getElementById("roulette-number-"+j).style.color="black"
+			else
+				document.getElementById("roulette-number-"+j).style.color="red"
+			if(document.getElementById("roulette-number-"+j)==document.getElementById("roulette-number-0"))
+				document.getElementById("roulette-number-"+j).style.color="white"
+		}
+	}
+	function startOrStop(e) 
+	{
+		if (!timer) 
+		{
+			timer = window.setInterval(succ, 50)
+			toggle.textContent = 'STOP'
+			mainBox.className = ''
+		}
+		else 
+		{
+			window.clearInterval(timer)
+			timer = null
+			toggle.textContent = 'START'
+			mainBox.className = 'blink0'
+			save2=save;
+			var fate=document.getElementById("roulette-number-0").innerHTML;
+			if(fate==0)
+				put3();
+			for(var u=1;u<18;u++)
+			{
+				if(fate==document.getElementById("Num"+u).innerHTML)
+				{
+					if(document.getElementById("Num"+u).style.color=="yellow")
+					{
+						save+=redu1*2;
+						save2=save;
+						document.getElementById("LeftMoneyDiv").innerHTML="$"+save;
+						alert("恭喜獲得"+redu1*2+"元");
+						put3();
+					}
+					else if(document.getElementById("Num"+u).style.color=="blue")
+					{
+						save+=redu2*2;
+						save2=save;
+						document.getElementById("LeftMoneyDiv").innerHTML="$"+save;
+						alert("恭喜獲得"+redu2*2+"元");
+						put3();
+					}
+					else if(document.getElementById("Num"+u).style.color=="green")
+					{
+						save+=redu3*2;
+						save2=save;
+						document.getElementById("LeftMoneyDiv").innerHTML="$"+save;
+						alert("恭喜獲得"+redu3*2+"元");
+						put3();
+					}
+					else
+					{
+						alert("可惜沒有中獎");
+						put3()
+					}
+				}
+			}
+			clear();
+		}
+	}
+	function blink(e) 
+	{
+		if (this.className == 'blink2') 
+			this.className = ''
+		else 
+			this.className = 'blink' + (this.className.substr(-1)*1 + 1)
+	}
+	toggle.addEventListener('click', startOrStop, false)
+	mainBox.addEventListener(transitionEvent(document.documentElement.className), blink, false)
+	function transitionEvent(n) 
+	{
+		if (n == 'opera') 
+			return 'otransitionend'
+		else if (n == 'webkit') 
+			return 'webKitTransitionEnd'
+		return 'transitionend'
+	}
+})()
+
+</script>
+</body>
+</html>
